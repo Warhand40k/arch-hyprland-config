@@ -1,0 +1,34 @@
+{
+	"layer": "bottom",
+	"position": "top",
+	"height": 36,	
+	"spacing": 0,
+	"exclusive": true,
+	"fixed-center": true,
+	"reload_style_on_change": true,
+
+	"include": [
+		"~/.config/waybar/modules-left.jsonc",
+		"~/.config/waybar/modules-right.jsonc",
+		"~/.config/waybar/modules-center.jsonc"
+	],
+	"modules-left": [
+		"group/arch",
+		"hyprland/workspaces",
+		"hyprland/window"
+	],
+	"modules-center": [
+		"cava"
+	],
+	"modules-right": [
+		"privacy",
+		"custom/nvidia",
+		"group/processor",
+		"network",
+		"bluetooth",
+		"group/audio",	
+		"group/brightness",
+		"battery",
+		"group/time"	
+	]
+}

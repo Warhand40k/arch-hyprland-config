@@ -1,0 +1,251 @@
+/*colors*/
+@import url("/home/amal/.cache/wal/colors-waybar.css");
+
+@define-color IndianRed #cd5c5c;
+@define-color CornflowerBlue #6495ed;
+
+/*not-modules*/
+* {
+	font-family: "JetBrainsMono Nerd Font Propo", "Quantico", "Space Mono", "Outfit", "Cascadia Mono";
+	font-size: 14px;
+	color: @cursor;
+}
+
+window#waybar {
+	background: alpha(shade(@color0, 1), 0.5);
+}
+
+/*tooltip*/
+tooltip {
+	background: @color0;
+	border: 1px double @color4;
+	border-radius: 10px;
+}
+tooltip label {
+	padding: 0px;
+	margin: 0px;
+	font-family: "Quantico";
+	font-size: 14px;
+	font-style: italic;
+	color: @cursor;
+}
+
+/*background*/
+#arch,
+#workspaces,
+#cava,
+#privacy,
+#custom-nvidia,
+#processor,
+#network,
+#bluetooth,
+#audio,
+#brightness,
+#battery,
+#time {
+	background-color: @color0;
+}
+
+/*margin*/
+#arch,
+#workspaces {
+	margin: 4px 0px 6px 4px;
+}
+
+#cava,
+#privacy,
+#custom-nvidia,
+#processor,
+#network,
+#bluetooth,
+#audio,
+#brightness,
+#battery,
+#time {
+	margin: 4px 4px 6px 0px;
+}
+
+/*borders*/
+#arch,
+#cava,
+#privacy,
+#custom-nvidia,
+#processor,
+#network,
+#bluetooth,
+#audio,
+#brightness,
+#battery,
+#time {
+	border-radius: 10px;
+}
+
+#workspaces {
+	border-radius: 64px;
+}
+
+/*padding*/
+#arch,
+#custom-power,
+#custom-reboot,
+#custom-lock,
+#custom-logout,
+#window,
+#privacy-item,
+#custom-nvidia,
+#processor,
+#network,
+#bluetooth,
+#audio,
+#brightness,
+#battery,
+#time {
+	padding: 0px 10px 0px 10px;
+}
+
+#custom-power {
+	padding-left: 15px;
+}
+
+#custom-fan {
+	padding-left: 2px;
+}
+
+#workspaces {
+	padding: 0px 12px 0px 12px;
+}
+
+#cava {
+	padding: 0px 20px 0px 20px;
+}
+
+#cpu {
+	padding: 0px 10px 0px 0px;
+}
+
+#clock {
+	padding-left: 7px;
+}
+
+/*modules*/
+#custom-arch,
+#custom-power,
+#custom-lock,
+#custom-fan {
+	font-size: 20px;
+}
+
+#custom-reboot {
+	font-size: 24px;
+}
+
+#custom-logout {
+	font-size: 19;
+}
+
+#workspaces button {
+	background: transparent;
+	border: 0px;
+	border-radius: 0px;
+}
+
+#cava {
+	opacity: 0.75;
+	color: @color2;
+}
+
+#custom-nvidia,
+#cpu,
+#temperature {
+	font-family: "Outfit"
+}
+
+#pulseaudio-slider slider {
+    min-height: 0px;
+    min-width: 0px;
+    opacity: 0;
+    background-image: none;
+    border: none;
+    box-shadow: none;
+}
+#pulseaudio-slider trough {
+    min-height: 6px;
+    min-width: 120px;
+    border: 1px solid @cursor;
+    border-radius: 5px;
+    background-color: @background;
+}
+#pulseaudio-slider highlight {
+    min-height: 6px;
+    border: 1px solid @cursor;
+    border-radius: 5px;
+    background-color: @cursor;
+}
+
+#backlight-slider slider {
+    min-height: 0px;
+    min-width: 0px;
+    opacity: 0;
+    background-image: none;
+    border: none;
+    box-shadow: none;
+}
+#backlight-slider trough {
+    min-height: 6px;
+    min-width: 120px;
+    border: 1px solid @cursor;
+    border-radius: 5px;
+    background-color: @background;
+}
+#backlight-slider highlight {
+    min-height: 6px;
+    border: 1px solid @cursor;
+    border-radius: 5px;
+    background-color: @cursor;
+}
+
+#custom-time_of_the_day {
+	font-size: 20px
+}
+#clock {
+	font-family: "Droid Logo";
+	font-style: italic;
+	font-size: 13px;
+}
+
+/*modules with states*/
+#cpu.critical,
+#temperature.critical,
+#network.disconnected,
+#bluetooth.off,
+#battery.critical {
+	color: @IndianRed;
+}
+
+#cpu.normal,
+#network.wifi,
+#bluetooth.connected {
+	color: @CornflowerBlue;
+}
+
+#cpu.high,
+#network.ethernet,
+#battery.charging,
+#battery.charging.critical {
+	color: @color6;
+}
+
+/*hover*/
+#arch:hover {
+	border-bottom-right-radius: 15px;
+	border-top-right-radius: 15px;
+	background: shade(@color1,0.75);
+}
+#custom-power:hover,
+#custom-reboot:hover,
+#custom-lock:hover,
+#custom-logout:hover,
+#custom-fan:hover {
+	color: @IndianRed;
+	text-shadow: 2 2 3px @IndianRed;
+}

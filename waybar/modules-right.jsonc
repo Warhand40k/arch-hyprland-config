@@ -1,0 +1,191 @@
+{
+	"privacy": {
+		"icon-spacing": 4,
+		"icon-size": 15,
+		"transition-duration": 250,
+		"modules": [
+			{
+		"type": "screenshare",
+				"tooltip": true,
+				"tooltip-icon-size": 15
+			},
+			{
+				"type": "audio-in",
+				"tooltip": true,
+				"tooltip-icon-size": 15
+			},
+			{
+				"type": "audio-out",
+				"tooltip": true,
+				"tooltip-icon-size": 15
+			}
+		],
+		"expand": false,
+		"ignore-monitor": true,
+		"ignore": [
+			{
+				"type": "audio-in",
+				"name": "cava"
+			}
+		]
+	},	
+
+	"custom/nvidia": {
+    		"exec": "nvidia-smi --query-gpu=utilization.gpu,temperature.gpu --format=csv,nounits,noheader | sed 's/\\([0-9]\\+\\), \\([0-9]\\+\\)/\\1%    \\2°C/g'",
+    		"format": "󱀚  {}",
+    		"interval": 5,
+		"on-click": "nbfc-qt",
+		"tooltip": false
+	},
+
+	"group/processor": {
+		"name": "processor",
+	 	"orientation": "inherit",
+		"modules": [
+			"cpu",
+			"temperature"
+		]
+	},
+
+	"cpu": {
+		"interval": 2,
+		"format": "   {usage}%",
+		"states": {
+			"normal": 20,
+			"high": 60,
+			"critical": 90
+		},
+		"tooltip": true
+	},
+
+	"temperature": {
+		"thermal-zone": 6,
+		"critical-threshold": 80,
+		"interval": 5,
+  		"format": "{icon} {temperatureC}°C",
+		"format-icons": ["", "", "", "", ""],
+		"on-click": "nbfc-qt",
+		"tooltip": false
+	},
+	
+	"network": {
+		"interval": 5,
+		"family": "ipv4_6",
+		"format": "{icon}",
+		"format-disconnected": "󰤭",
+		"format-icons": {
+			"ethernet": "󰈀",
+			"wifi": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"]
+		},
+		"on-click": "kitty --class nmtui -e nmtui",
+		"on-click-right": "nm-connection-editor",
+		"tooltip": true,
+		"tooltip-format": "{essid} <span font_size='9000'>{bandwidthDownBytes}</span>",
+		"tooltip-format-ethernet": "{ifname} <span font_size='9000'>{bandwidthDownBytes}</span>",
+		"tooltip-format-wifi": "{essid} <span font_size='9000'>{bandwidthDownBytes}</span>",
+		"tooltip-format-disconnected": "Disconnected"
+	},
+
+	"bluetooth": {
+		"format-off": "󰂲",
+		"format-on": "󰂯",
+		"format-connected": "󰂱",
+		"on-click": "/home/amal/.config/scripts/toggle-bluetooth.sh",
+		"on-click-right": "blueman-manager",
+		"tooltip-format-off": "Bluetooth off",
+		"tooltip-format-on": "Bluetooth on",
+		"tooltip-format-connected": "{device_enumerate}",
+		"tooltip-format-enumerate-connected": "{device_alias}",
+		"tooltip-format-connected-battery": "{device_enumerate}",
+		"tooltip-format-enumerate-connected-battery": "{device_alias} - {device_battery_percentage}%"
+	},
+	
+	"group/audio": {
+		"name": "audio",
+		"orientation": "inherit",
+		"modules": [
+			"pulseaudio",
+			"pulseaudio/slider"
+		],
+		"drawer": {
+			"transition-duration": 800
+		}
+	},
+	"pulseaudio": {
+		"format": "{icon}",
+		"format-icons": {
+			"default": "󰕾",
+			"headphone": "",
+			"speaker": ["󰕿", "󰖀", "󰕾"],
+			"headset": "󰋎"
+		},
+		"on-click": "/home/amal/.config/scripts/toggle-volume.sh",
+		"on-click-right": "pavucontrol",
+		"tooltip": true,
+		"tooltip-format": "{volume}%"
+	},
+	"pulseaudio/slider": {
+		"min": 0,
+		"max": 153,
+		"orientation": "horizontal"
+	},
+
+	"group/brightness": {
+		"name": "brightness",
+		"orientation": "inherit",
+		"modules": [
+			"backlight",
+			"backlight/slider"
+		],
+		"drawer": {
+			"transition-duration": 800
+		}
+	},
+	"backlight": {
+		"interval": 2,
+		"format": "{icon}",
+		"format-icons": ["󱩎", "󱩏", "󱩐", "󱩑", "󱩒", "󱩓", "󱩔", "󱩕", "󱩖", "󰛨"],
+		"tooltip": true,
+		"tooltip-format": "{percent}%"
+	},
+	"backlight/slider": {
+		"min": 10,
+		"max": 100,
+		"orientation": "horizontal",
+		"device": "intel_backlight"
+	},
+
+	"battery": {
+		"interval": 1,
+		"states": {"critical": 15},
+		"format": "{icon} <span font_family='Outfit' font_size='10000'>{capacity}%</span>",
+		"format-charging": "󱐋{icon} <span font_family='Outfit' font_size='10000'>{capacity}%</span>",
+		"format-critical": "!{icon} <span font_family='Outfit' font_size='10000'>{capacity}%</span>",
+		"format-charging-critical": "󱐋{icon} <span font_family='Outfit' font_size='10000'>{capacity}%</span>",
+		"format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+	},
+
+	"group/time": {
+		"name": "time",
+		"orientation": "inherit",
+		"modules": [
+			"custom/time_of_the_day",
+			"clock"
+		]
+	},
+
+	"custom/time_of_the_day": {
+		"format": "{}",
+		"exec": "/home/amal/.config/scripts/time-of-the-day.sh",
+		"interval": 300,
+		"tooltip": false
+	},
+
+	"clock": {
+		"interval": 60,
+		"format": "{:%A\n%R}",
+		"format-alt": "{:%A\n%b  %d}",
+		"timezone": "Asia/Kolkata",
+		"tooltip": false
+	}
+}
