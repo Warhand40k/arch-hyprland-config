@@ -44,4 +44,3 @@ A customized Arch Linux desktop environment built with the **Hyprland Wayland co
 - Btrfs snapshot strategy using Timeshift
 - Modular and reproducible configuration files
 
-## Structure
