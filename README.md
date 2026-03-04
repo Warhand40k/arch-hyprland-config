@@ -1,3 +1,4 @@
+![Desktop Preview](screenshots/desktop.png)
 # Arch Linux Hyprland Setup
 
 A customized Arch Linux desktop environment built with the **Hyprland Wayland compositor**, featuring a modular **Waybar interface**, hybrid GPU support, and Btrfs-based system management.
